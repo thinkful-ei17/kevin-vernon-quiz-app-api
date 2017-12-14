@@ -3,6 +3,7 @@
 /* global $*/
 
 const quiz_url = 'https://opentdb.com/api.php?';
+const token_url = 'https://opentdb.com/api_token.php?';
 const TOP_LEVEL_COMPONENTS = [
     'js-intro', 'js-question', 'js-question-feedback', 'js-outro', 'js-quiz-status'
 ];
@@ -27,7 +28,7 @@ const getInitialStore = function() {
         currentQuestionIndex: null,
         userAnswers: [],
         feedback: null,
-        amountOfQuestions: 3,
+        amountOfQuestions: 5,
         category: '',
         type: 'multiple'
     };
@@ -37,7 +38,7 @@ let store = getInitialStore();
 
 //add data functions
 const fetchMultipleChoiceQuestions = function (url, callback) {
-
+    console.log('fetchMultipleChoiceQuestions');
     const query = {
         url: url,
         type: 'GET',
@@ -46,35 +47,51 @@ const fetchMultipleChoiceQuestions = function (url, callback) {
         data: {
             category: store.category,
             amount: store.amountOfQuestions,
-            type: store.type
+            type: store.type,
+            token: store.token
         }
     };
 
     $.ajax(query);
 };
 
-const fetchToken = function () {
+const fetchToken = function (url, command, callback) {
+    const query = {
+        url: url,
+        type: 'GET',
+        success: callback,
+        dataType: 'json',
+        data: {
+            command: command
+        }
+    };
 
+    $.ajax(query);
 };
 
 
 //end data functions
 
-//doSomethingWithData
+//doSomethingWithData -- callbacks
 const apiQuestionSteps = function (data) {
-
-    console.log(data.results[0]);
-    console.log(data.results[1]);
-    console.log(data.results[2]);
-
+    console.log('apiQuestionSteps is called.');
     fillQuestions(data);
-
 
     console.log(QUESTIONS);
 
     render();
 
 };
+
+const tokenQuestionSteps = function (data) {
+    if (store.token === '') {
+        store.token = data.token;
+        console.log('Token: ');
+        console.log(store.token);
+    }
+
+};
+
 // Helper functions
 // ===============
 const hideAll = function() {
@@ -205,6 +222,7 @@ const render = function() {
 
 //Utility functions
 //====================
+
 function fillQuestions (data) {
     QUESTIONS = data.results.map(function (index) {
         console.log(index.question);
@@ -212,7 +230,7 @@ function fillQuestions (data) {
         dataAnswers.push(index.correct_answer);
         return {
             text: index.question,
-            answers: dataAnswers,
+            answers: dataAnswers, // [1,2,3,incorrect answer]
             correctAnswer: index.correct_answer
         };
     });
@@ -255,9 +273,18 @@ const handleStartQuiz = function() {
     //set our STORE to reflect our tempVals
     store.category = tempVals.category;
     store.amountOfQuestions = tempVals.amountOfQuestions;
-    //call our data & populate.
+
+    //getToken
+    fetchToken(token_url, 'request', tokenQuestionSteps);
+
+
+    //store the token
+
+    //call our data & populate. //cant start render() yet so another func w/ callback
     fetchMultipleChoiceQuestions(quiz_url, apiQuestionSteps);
-    //cant start render() yet so another func w/ callback
+
+    //render
+
 
 };
 
