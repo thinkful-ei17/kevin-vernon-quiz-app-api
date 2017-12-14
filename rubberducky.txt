@@ -1,0 +1,31 @@
+Req-- 
+User should be asked number of questions for quiz session before beginning (max. 50)
+User should not receive a duplicate question during their entire session (see "Session Tokens" in the API docs)
+User can select a single category of questions
+Only multiple choice questions need to be supported
+
+Changes To Be Made: 
+
+Changing HTML/Template to include the input from user to get #qs & category
+- changed CSS to match cool design x
+- added HTML select/input x
+- tested changes in devtools w/ width. x
+- might have to change px to em. x
+- change n out of n and score sizesss... x
+
+Prob: can press start button w/o putting items in field!
+- add required x
+- insert start button into form x
+- added submit tag to button x 
+
+//==========================
+Create a function(s) to get data.
+
+- one is getting the data using $.ajax
+	gets sent the query: numberofQs, category
+- one is the callback
+	should populate our QUESTIONS arr
+
+... the we should start our quiz like normal... but. start has to happen after i populate.
+
+... looking at thinkful tube and apiquery for ajax

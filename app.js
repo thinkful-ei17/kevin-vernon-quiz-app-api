@@ -26,7 +26,10 @@ const getInitialStore = function() {
         page: 'intro',
         currentQuestionIndex: null,
         userAnswers: [],
-        feedback: null
+        feedback: null,
+        amount: 0,
+        category: '',
+        type: ''
     };
 };
 
@@ -34,13 +37,18 @@ let store = getInitialStore();
 
 //add data functions
 const fetchMultipleChoiceQuestions = function (url, callback) {
-    const query = {
-        data: {
 
-        }
+    const query = {
+        url: url,
+        data: {
+            type: 'video',
+        },
+        dataType: 'json',
+        type: 'GET',
+        success: callback,
     };
 
-    $.ajax(query, callback);
+    $.ajax(query);
 };
 
 const fetchToken = function () {
@@ -183,7 +191,7 @@ const render = function() {
 // Event handler functions
 // =======================
 const handleStartQuiz = function() {
-    this.preventDefault();
+    event.preventDefault();
     console.log('-- start --');
     console.log('handleStartQuiz');
     store = getInitialStore();
@@ -226,12 +234,14 @@ const handleNextQuestion = function() {
     render();
 };
 
+
 // On DOM Ready, run render() and add event listeners
 $(() => {
     console.log('-- start --');
     render();
     //callbacks are the last arguments
-    $('.js-intro, .js-outro').on('click', '.js-start', handleStartQuiz);
+    $('.js-outro').on('click', '.js-start', handleStartQuiz);
+    $('#form').on('submit', handleStartQuiz);
     $('.js-question').on('submit', handleSubmitAnswer);
     $('.js-question-feedback').on('click', '.js-continue', handleNextQuestion);
 });
