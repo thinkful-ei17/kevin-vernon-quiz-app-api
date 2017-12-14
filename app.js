@@ -111,6 +111,8 @@ const render = function() {
 	$('.js-score').html(`<span>Score: ${getScore()}</span>`);
 	$('.js-progress').html(`<span>Question ${current} of ${total}`);
 
+	//switch looks at the value of page. which
+	//technically a view.
 	switch (store.page) {
 	case 'intro':
 		$('.js-intro').show();
@@ -143,6 +145,7 @@ const render = function() {
 // Event handler functions
 // =======================
 const handleStartQuiz = function() {
+	console.log('star quiz ran');
 	store = getInitialStore();
 	store.page = 'question';
 	store.currentQuestionIndex = 0;

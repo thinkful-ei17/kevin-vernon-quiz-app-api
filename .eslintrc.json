@@ -1,3 +1,4 @@
+
 {
     "env": {
         "es6": true,
@@ -12,6 +13,9 @@
         "linebreak-style": [
             "error",
             "windows"
+        ],
+        "no-console":[
+          "warn"
         ],
         "quotes": [
             "error",
