@@ -57,9 +57,7 @@ const fetchToken = function () {
 
 };
 
-const insertQuestions = function () {
 
-};
 //end data functions
 
 //doSomethingWithData
@@ -69,21 +67,11 @@ const apiQuestionSteps = function (data) {
     console.log(data.results[1]);
     console.log(data.results[2]);
 
+    fillQuestions(data);
 
-
-    QUESTIONS = data.results.map(function (index) {
-        console.log(index.question);
-        let dataAnswers = index.incorrect_answers;
-        dataAnswers.push(index.correct_answer);
-        return {
-            text: index.question,
-            answers: dataAnswers,
-            correctAnswer: index.correct_answer
-        };
-    });
 
     console.log(QUESTIONS);
-    
+
     render();
 
 };
@@ -217,6 +205,19 @@ const render = function() {
 
 //Utility functions
 //====================
+function fillQuestions (data) {
+    QUESTIONS = data.results.map(function (index) {
+        console.log(index.question);
+        let dataAnswers = index.incorrect_answers;
+        dataAnswers.push(index.correct_answer);
+        return {
+            text: index.question,
+            answers: dataAnswers,
+            correctAnswer: index.correct_answer
+        };
+    });
+}
+
 function getQuery() {
     let category = '';
     let amountOfQuestions = 0;
@@ -232,6 +233,10 @@ function getQuery() {
         category: category,
         amountOfQuestions: amountOfQuestions
     };
+}
+
+function randomize(arr) {
+
 }
 // Event handler functions
 // =======================

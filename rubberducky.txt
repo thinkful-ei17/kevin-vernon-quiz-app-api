@@ -9,9 +9,7 @@ Changes To Be Made:
 Changing HTML/Template to include the input from user to get #qs & category
 - changed CSS to match cool design x
 - added HTML select/input x
-- tested changes in devtools w/ width. x
-- might have to change px to em. x
-- change n out of n and score sizesss... x
+- listen for submit x
 
 Prob: can press start button w/o putting items in field!
 - add required x
@@ -29,3 +27,56 @@ Create a function(s) to get data.
 ... the we should start our quiz like normal... but. start has to happen after i populate.
 
 ... looking at thinkful tube and apiquery for ajax
+... saw that listener wasnt working properly for submit actions on start button
+... tried a dif format; function -> listener -> new function (event)
+//==============================
+-> the callback has access to the event obj. i cant pass it in. lul
+
+//==========================
+Create a function(s) to get data.
+
+- one is getting the data using $.ajax
+	gets sent the query: numberofQs, category
+- one is the callback
+	should populate our QUESTIONS arr
+
+...we should start our quiz like normal... but. start has to happen after i populate.
+...url isnt set up yettt x
+- going to display data 
+... changing fetchQuestions 2 work properly. 
+... have to retrieve from global STORE object, going set them in a function later on.
+setting them to defualt for now.
+
+DISPLAYS DATA ON CONSOLE: CHECK.
+
+//======================== 
+Retrieve input from input tags
+
+- find out how to select them
+- get values from input/select
+- set STORE obj to those values. 
+
+... made a function named getQuery that gets values using jquery selectors
+...insert getQuery into handleStart; IT WORKS. 
+
+INPUT IS TAKEN FROM TAGS: FUCK YES.
+
+//=======================
+Results displayed on console change when user inserts a new values for query
+
+- set our state to have new values query
+- getData function can access those values in STATE/STORE
+... changing things in fetch aka getData
+... changed index.html to reflect correct values for category input!
+... finally added the code that changes our store
+
+
+RESULTS CHANGE ON CONSOLE WITH DIF INPUT: BANG.
+
+//fill in questions
+... check how2access x
+- questions would need2merge
+- .map.... return... obj
+....idk the obj keys
+- return an object that looks exactly like QUESTIONS did tho
+- set template for obj
