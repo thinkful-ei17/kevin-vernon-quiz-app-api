@@ -2,7 +2,7 @@
 
 /* global $*/
 
-
+const quiz_url = 'https://opentdb.com/api.php?';
 const TOP_LEVEL_COMPONENTS = [
     'js-intro', 'js-question', 'js-question-feedback', 'js-outro', 'js-quiz-status'
 ];
@@ -40,12 +40,13 @@ const fetchMultipleChoiceQuestions = function (url, callback) {
 
     const query = {
         url: url,
-        data: {
-            type: 'video',
-        },
-        dataType: 'json',
         type: 'GET',
         success: callback,
+        dataType: 'json',
+        data: {
+            amount: 15,
+            type: 'multiple'
+        }
     };
 
     $.ajax(query);
@@ -60,6 +61,10 @@ const insertQuestions = function () {
 };
 //end data functions
 
+//doSomethingWithData
+const seeData = function (data) {
+    console.log(data);
+};
 // Helper functions
 // ===============
 const hideAll = function() {
@@ -199,6 +204,9 @@ const handleStartQuiz = function() {
     store.currentQuestionIndex = 0;
     //call our data & populate.
     //cant start render() yet so another func w/ callback
+
+    fetchMultipleChoiceQuestions(quiz_url, seeData);
+
     render();
 };
 
