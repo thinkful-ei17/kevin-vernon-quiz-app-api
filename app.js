@@ -32,6 +32,26 @@ const getInitialStore = function() {
 
 let store = getInitialStore();
 
+//add data functions
+const fetchMultipleChoiceQuestions = function (url, callback) {
+    const query = {
+        data: {
+
+        }
+    };
+
+    $.ajax(query, callback);
+};
+
+const fetchToken = function () {
+
+};
+
+const insertQuestions = function () {
+
+};
+//end data functions
+
 // Helper functions
 // ===============
 const hideAll = function() {
@@ -163,6 +183,7 @@ const render = function() {
 // Event handler functions
 // =======================
 const handleStartQuiz = function() {
+    this.preventDefault();
     console.log('-- start --');
     console.log('handleStartQuiz');
     store = getInitialStore();

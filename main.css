@@ -40,8 +40,9 @@ button {
   background-color: white;
   margin: 0 auto;
 
-  padding: 15 15 15 15;
-  border: 1px solid black;
+  margin-top: 40px;
+  padding: 30 20 30 20;
+  border: 3px solid black;
 }
 
 .start:hover {
@@ -155,7 +156,7 @@ body {
 
 select {
   font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
+  font-size: 1em;
   width: 450px;
   height: 50px;
   padding: 0px 15px 0px 15px;
@@ -165,8 +166,7 @@ select {
   /* color: #726659; */
   color: black;
 
-  border: solid 1px #b3aca7;
-  border-bottom: none;
+  border: solid 2px black;
 
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -259,7 +259,7 @@ select:hover {
 
 #name {
   font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
+  font-size: 1em;
   width: 450px;
   height: 50px;
   padding: 0px 15px 0px 15px;
@@ -269,8 +269,7 @@ select:hover {
   /* color: #726659; */
   color: black;
 
-  border: solid 1px #b3aca7;
-  border-bottom: none;
+  border: solid 2px black;
 
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
