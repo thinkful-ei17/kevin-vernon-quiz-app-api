@@ -168,6 +168,8 @@ const handleStartQuiz = function() {
     store = getInitialStore();
     store.page = 'question';
     store.currentQuestionIndex = 0;
+    //call our data & populate.
+    //cant start render() yet so another func w/ callback
     render();
 };
 

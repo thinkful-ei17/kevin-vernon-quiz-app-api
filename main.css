@@ -13,8 +13,39 @@ html {
   font: 100%/1.5 serif;
 }
 
+header, p {
+  position: relative;
+  margin: 100px 0 25px 0;
+  font-size: 2.3em;
+  text-align: center;
+  letter-spacing: 7px;
+}
+
+h1, p {
+  margin: 0 0 0 0;
+  font-size: 1em;
+}
+
+h4 {
+  font-size: .5em;
+}
+
 button {
   display: block;
+
+}
+
+.start {
+  border: none;
+  background-color: white;
+  margin: 0 auto;
+
+  padding: 15 15 15 15;
+  border: 1px solid black;
+}
+
+.start:hover {
+  background-color: #bbb5af;
 }
 
 .quiz-status, .outro {
@@ -24,80 +55,88 @@ button {
 .answer-item {
   list-style-type: none;
 }
+
+fieldset {
+  min-width: -webkit-min-content;
+  border-width: 2px;
+  border-style: groove;
+  border-color: threedface;
+  border-image: initial;
+}
 /* -----------------------------------  */
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
 
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+select::-webkit-select-placeholder, textarea::-webkit-select-placeholder {
   color: #aca49c;
   font-size: 0.875em;
 }
 
-input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+select:focus::-webkit-select-placeholder, textarea:focus::-webkit-select-placeholder {
   color: #bbb5af;
 }
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+select::-moz-placeholder, textarea::-moz-placeholder {
   color: #aca49c;
   font-size: 0.875em;
 }
 
-input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
+select:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
   color: #bbb5af;
 }
 
-input::placeholder, textarea::placeholder {
+select::placeholder, textarea::placeholder {
   color: #aca49c;
   font-size: 0.875em;
 }
 
-input:focus::placeholder, textarea::focus:placeholder {
+select:focus::placeholder, textarea::focus:placeholder {
   color: #bbb5af;
 }
 
-input::-ms-placeholder, textarea::-ms-placeholder {
+select::-ms-placeholder, textarea::-ms-placeholder {
   color: #aca49c;
   font-size: 0.875em;
 }
 
-input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
+select:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
   color: #bbb5af;
 }
 
 /* on hover placeholder */
 
-input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
+select:hover::-webkit-select-placeholder, textarea:hover::-webkit-select-placeholder {
   color: #e2dedb;
   font-size: 0.875em;
 }
 
-input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
+select:hover:focus::-webkit-select-placeholder, textarea:hover:focus::-webkit-select-placeholder {
   color: #cbc6c1;
 }
 
-input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
+select:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
   color: #e2dedb;
   font-size: 0.875em;
 }
 
-input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
+select:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
   color: #cbc6c1;
 }
 
-input:hover::placeholder, textarea:hover::placeholder {
+select:hover::placeholder, textarea:hover::placeholder {
   color: #e2dedb;
   font-size: 0.875em;
 }
 
-input:hover:focus::placeholder, textarea:hover:focus::placeholder {
+select:hover:focus::placeholder, textarea:hover:focus::placeholder {
   color: #cbc6c1;
 }
 
-input:hover::placeholder, textarea:hover::placeholder {
+select:hover::placeholder, textarea:hover::placeholder {
   color: #e2dedb;
   font-size: 0.875em;
 }
 
-input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
+select:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
   color: #cbc6c1;
 }
 
@@ -108,24 +147,16 @@ body {
 
 }
 
-header {
-  position: relative;
-  margin: 100px 0 25px 0;
-  font-size: 2.3em;
-  text-align: center;
-  letter-spacing: 7px;
-}
-
 #form {
   position: relative;
-  width: 500px;
+  width: 450px;
   margin: 50px auto 100px auto;
 }
 
-input {
+select {
   font-family: 'Lato', sans-serif;
   font-size: 0.875em;
-  width: 470px;
+  width: 450px;
   height: 50px;
   padding: 0px 15px 0px 15px;
 
@@ -143,26 +174,103 @@ input {
   -ms-transition: all 0.3s ease-in-out;
 }
 
-input:hover {
+select:hover {
   background: #b3aca7;
   color: #e2dedb;
+
+  /* ------------------------- SELECT -------------------------------- */
+}
+#name::-webkit-#name-placeholder {
+  /* color: #aca49c; */
+  color: black;
+  font-size: 2em;
 }
 
-textarea {
-  width: 470px;
-  max-width: 470px;
-  height: 110px;
-  max-height: 110px;
-  padding: 15px;
+#name:focus::-webkit-#name-placeholder {
+  color: #bbb5af;
+}
+
+#name::-moz-placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+#name:focus::-moz-placeholder {
+  color: #bbb5af;
+}
+
+#name::placeholder {
+  /* color: #aca49c; */
+  color: black;
+  font-size: 0.875em;
+}
+
+#name:focus::placeholder {
+  color: #bbb5af;
+}
+
+#name::-ms-placeholder {
+  color: #aca49c;
+  font-size: 0.875em;
+}
+
+#name:focus::-ms-placeholder {
+  color: #bbb5af;
+}
+
+/* on hover placeholder */
+
+#name:hover::-webkit-#name-placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+#name:hover:focus::-webkit-#name-placeholder {
+  color: #cbc6c1;
+}
+
+#name:hover::-moz-placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+#name:hover:focus::-moz-placeholder {
+  color: #cbc6c1;
+}
+
+#name:hover::placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+#name:hover:focus::placeholder {
+  color: #cbc6c1;
+}
+
+#name:hover::placeholder {
+  color: #e2dedb;
+  font-size: 0.875em;
+}
+
+#name:hover:focus::-ms-placeholder {
+  color: #cbc6c1;
+}
+
+
+#name {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  width: 450px;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
 
   background: transparent;
   outline: none;
-
-  color: #726659;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
+  /* color: #726659; */
+  color: black;
 
   border: solid 1px #b3aca7;
+  border-bottom: none;
 
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -170,28 +278,7 @@ textarea {
   -ms-transition: all 0.3s ease-in-out;
 }
 
-textarea:hover {
+#name:hover {
   background: #b3aca7;
-  color: #e2dedb;
-}
-
-#submit {
-  width: 502px;
-
-  padding: 0;
-  margin: -5px 0px 0px 0px;
-
-  font-family: 'Lato', sans-serif;
-  font-size: 0.875em;
-  color: #b3aca7;
-
-  outline:none;
-  cursor: pointer;
-
-  border: solid 1px #b3aca7;
-  border-top: none;
-}
-
-#submit:hover {
   color: #e2dedb;
 }
