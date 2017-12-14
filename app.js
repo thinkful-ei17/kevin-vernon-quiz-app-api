@@ -7,7 +7,7 @@ const TOP_LEVEL_COMPONENTS = [
     'js-intro', 'js-question', 'js-question-feedback', 'js-outro', 'js-quiz-status'
 ];
 
-const QUESTIONS = [
+let QUESTIONS = [
     {
         text: 'Capital of England?',
         answers: ['London', 'Paris', 'Rome', 'Washington DC'],
@@ -27,9 +27,9 @@ const getInitialStore = function() {
         currentQuestionIndex: null,
         userAnswers: [],
         feedback: null,
-        amount: 0,
+        amountOfQuestions: 3,
         category: '',
-        type: ''
+        type: 'multiple'
     };
 };
 
@@ -44,8 +44,9 @@ const fetchMultipleChoiceQuestions = function (url, callback) {
         success: callback,
         dataType: 'json',
         data: {
-            amount: 15,
-            type: 'multiple'
+            category: store.category,
+            amount: store.amountOfQuestions,
+            type: store.type
         }
     };
 
@@ -62,8 +63,29 @@ const insertQuestions = function () {
 //end data functions
 
 //doSomethingWithData
-const seeData = function (data) {
-    console.log(data);
+const apiQuestionSteps = function (data) {
+
+    console.log(data.results[0]);
+    console.log(data.results[1]);
+    console.log(data.results[2]);
+
+
+
+    QUESTIONS = data.results.map(function (index) {
+        console.log(index.question);
+        let dataAnswers = index.incorrect_answers;
+        dataAnswers.push(index.correct_answer);
+        return {
+            text: index.question,
+            answers: dataAnswers,
+            correctAnswer: index.correct_answer
+        };
+    });
+
+    console.log(QUESTIONS);
+    
+    render();
+
 };
 // Helper functions
 // ===============
@@ -193,6 +215,24 @@ const render = function() {
     }
 };
 
+//Utility functions
+//====================
+function getQuery() {
+    let category = '';
+    let amountOfQuestions = 0;
+    amountOfQuestions = $('#name').val();
+    category = $('#category').val();
+
+    console.log('!!!!!');
+    console.log(category);
+    console.log('~~~~');
+    console.log(amountOfQuestions);
+
+    return {
+        category: category,
+        amountOfQuestions: amountOfQuestions
+    };
+}
 // Event handler functions
 // =======================
 const handleStartQuiz = function() {
@@ -202,12 +242,18 @@ const handleStartQuiz = function() {
     store = getInitialStore();
     store.page = 'question';
     store.currentQuestionIndex = 0;
+
+    //retrieve query from form
+    let tempVals = {};
+    tempVals = getQuery();
+
+    //set our STORE to reflect our tempVals
+    store.category = tempVals.category;
+    store.amountOfQuestions = tempVals.amountOfQuestions;
     //call our data & populate.
+    fetchMultipleChoiceQuestions(quiz_url, apiQuestionSteps);
     //cant start render() yet so another func w/ callback
 
-    fetchMultipleChoiceQuestions(quiz_url, seeData);
-
-    render();
 };
 
 const handleSubmitAnswer = function(e) {
