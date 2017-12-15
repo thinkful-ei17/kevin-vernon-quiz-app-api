@@ -33,7 +33,7 @@ Create a function(s) to get data.
 -> the callback has access to the event obj. i cant pass it in. lul
 
 //==========================
-Create a function(s) to get data.
+Create function(s) to get data.
 
 - one is getting the data using $.ajax
 	gets sent the query: numberofQs, category
@@ -80,3 +80,18 @@ RESULTS CHANGE ON CONSOLE WITH DIF INPUT: BANG.
 ....idk the obj keys
 - return an object that looks exactly like QUESTIONS did tho
 - set template for obj
+
+FILL IN QUESTIONS: PEW
+
+//getToken
+- create a function to call for token
+- store token
+
+TOKEN: BAM
+
+//tokes are applied to ajax calls.
+
+token + ajax calls : BAM
+
+//stop resetting tokens
+

@@ -73,11 +73,13 @@ const fetchToken = function (url, command, callback) {
 //end data functions
 
 //doSomethingWithData -- callbacks
+//jquery.when()
+//LEARN PROMISES :D
 const apiQuestionSteps = function (data) {
     console.log('apiQuestionSteps is called.');
-    fillQuestions(data);
 
-    console.log(QUESTIONS);
+    fillQuestions(data);
+    //console.log(QUESTIONS);
 
     render();
 
@@ -282,6 +284,7 @@ const handleStartQuiz = function() {
 
     //call our data & populate. //cant start render() yet so another func w/ callback
     fetchMultipleChoiceQuestions(quiz_url, apiQuestionSteps);
+    //fetchMultipleChoiceQuestions(quiz_url, apiQuestionSteps);
 
     //render
 
